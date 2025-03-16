@@ -14,6 +14,10 @@ Route::view('dashboard', 'dashboard')
     ->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/test', function () {
+        $user = auth()->user();
+        dd($user->hasRole('admin'));
+    })->name('test');
     Route::redirect('settings', 'settings/profile');
 
     Route::get('settings/profile', Profile::class)->name('settings.profile');
