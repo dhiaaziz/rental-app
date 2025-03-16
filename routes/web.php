@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\RentController;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -16,10 +15,12 @@ Route::view('dashboard', 'dashboard')
     ->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
-    // group by controller
-    Route::controller(RentController::class)->group(function () {
-        Route::get('new-rent', 'create')->name('rent.create');
-    });
+    Route::get('/test', function () {
+        $user = auth()->user();
+        dd($user->hasRole('admin'));
+    })->name('test');
+    Route::redirect('settings', 'settings/profile');
+
 
     Route::redirect('settings', 'settings/profile');
     Route::get('settings/profile', Profile::class)->name('settings.profile');
