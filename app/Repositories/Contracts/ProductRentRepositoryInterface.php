@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Contracts;
 
+use Carbon\Carbon;
 use App\Models\ProductRent;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -31,4 +32,17 @@ interface ProductRentRepositoryInterface
      * Delete a product rent.
      */
     public function delete(ProductRent $rent): bool;
+
+      /**
+     * Check if a time slot is available (no overlap) for a given product.
+     *
+     * @param int $productId
+     * @param Carbon|string $startTime
+     * @param Carbon|string $endTime
+     * @return bool true if available, false if not
+     */
+    public function isTimeSlotAvailable(int $productId, $startTime, $endTime): bool;
+
+    public function getProductRentsBetween(int $productId, Carbon $start, Carbon $end);
+
 }

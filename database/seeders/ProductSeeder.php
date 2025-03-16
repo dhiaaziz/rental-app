@@ -13,7 +13,7 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        Product::create(['name' => 'MacBook Pro', 'price' => 2500.00]);
-        Product::create(['name' => 'iPad Air', 'price' => 799.99]);
+        Product::create(['name' => 'PS4', 'price' => 30000]);
+        Product::create(['name' => 'PS5', 'price' => 40000]);
     }
 }
